@@ -4,7 +4,7 @@ const { verify } = pkg;
 
 // Configurar el cliente JWKS para obtener las claves públicas
 const client = jwksClient({
-  jwksUri: 'https://dream-shop-sso.fly.dev/realms/quick-mart/protocol/openid-connect/certs' // URL de tu servidor de autenticación
+  jwksUri: 'https://dream-shop-sso.fly.dev/realms/quick-mart/protocol/openid-connect/certs'
 });
 
 // Función para obtener la clave pública correspondiente al 'kid' (Key ID) del JWT
