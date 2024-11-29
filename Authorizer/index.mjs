@@ -24,7 +24,7 @@ function verifyJWT(token) {
   return new Promise((resolve, reject) => {
     verify(token, getKey, {
       algorithms: ['RS256'],
-      audience: 'account', // Ajusta esto según tu configuración
+      audience: 'account',
       issuer: 'https://dream-shop-sso.fly.dev/realms/quick-mart'
     }, (err, decoded) => {
       if (err) {
@@ -59,7 +59,8 @@ function generatePolicy(principalId, effect, resource) {
 
 // Manejo de la solicitud del API Gateway
 export async function handler(event) {
-  const token = event.authorizationToken.split(' ')[1]; // Extraer el token del campo 'authorizationToken'
+  // Extraer el token del campo 'authorizationToken'
+  const token = event.authorizationToken.split(' ')[1];
   if (!token) {
     return generatePolicy('unknown', 'Deny', event.methodArn);
   }
